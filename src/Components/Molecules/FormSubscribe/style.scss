@@ -1,0 +1,21 @@
+@import '../../../Commons/variable.scss';
+.m-formSubscribe {
+    .form-control::-webkit-input-placeholder { color: white; }
+    border:1px solid $white-color;
+    padding: {
+        left: 10px;
+        right:10px;
+    }
+    &-input {
+        background-color: inherit;
+        border: unset;
+        outline: $pink-color;
+        height: 60px !important;
+        width: 500px !important;
+        &:focus {
+            color: $white-color;
+            background-color: inherit;
+            box-shadow:unset;
+        }
+    }
+}

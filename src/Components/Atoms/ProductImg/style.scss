@@ -1,0 +1,18 @@
+@import '../../../Commons/variable.scss';
+.a-proImg{
+    position: relative;
+    height: 470px;
+    &-overlay {
+        position: absolute;
+    }
+    &-img {
+        position: absolute;
+        top: 8%;
+        left: 7%;
+        width: 520px;
+        &:hover {
+            transform: scale(1.02);
+            transition: transform 0.5s ease 0s;
+        }
+    }
+}

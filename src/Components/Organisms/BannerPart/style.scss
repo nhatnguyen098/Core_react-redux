@@ -1,0 +1,12 @@
+@import '../../../Commons/variable.scss';
+.o-bannerPart {
+    height: 782px;
+    width: 100%;
+    margin-bottom: 50px;
+    &-col {
+        &-img {
+            width: 977px;
+            height: 728px;
+        }
+    }
+}

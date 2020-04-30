@@ -1,24 +1,19 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
-
-function App() {
+import HomePage from './Components/Pages/Home'
+import ScrollToTop from "react-scroll-up";
+import { AiFillUpCircle } from "react-icons/ai";
+const App = () => {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <HomePage/>
+      <ScrollToTop showUnder={0} duration={700}>
+                <AiFillUpCircle
+                    className="icon-nav"
+                    color="#4B3049"
+                    size="38px"
+                    style={{ margin: "0 5px" }}
+                />
+            </ScrollToTop>
     </div>
   );
 }
