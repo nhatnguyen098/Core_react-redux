@@ -10,7 +10,7 @@ const Index:React.FC<IProImg> = ({productOverlay,productImg}) => {
     return (
         <div className = {`${owlClass}`}>
             <Image className = {`${owlClass}-overlay`}  src = {productOverlay}/>
-            <Image className = {`${owlClass}-img`} src = {productImg}/>
+            <Image className = {`${owlClass}-img`} src = {`../../../assets/${productImg}`}/>
         </div>
     )
 }

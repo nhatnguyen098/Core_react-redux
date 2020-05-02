@@ -7,6 +7,12 @@
         &-img {
             width: 977px;
             height: 728px;
+            overflow: hidden;
+            &:hover {
+                transform: scale(1.01);
+                transition: transform 0.5s ease 0s;;
+            }
         }
+
     }
 }

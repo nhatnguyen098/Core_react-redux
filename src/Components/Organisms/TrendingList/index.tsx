@@ -2,7 +2,6 @@ import React from 'react'
 import './style.scss'
 import Title from '../../Atoms/Text';
 import ProductCart from '../../Molecules/CardProduct'
-import {Row} from 'react-bootstrap'
 const Index = ({productArr} : {productArr:any}) => {
     const owlClass = 'o-TrendingList'
     return (

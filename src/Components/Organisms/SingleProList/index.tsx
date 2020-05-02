@@ -5,9 +5,14 @@ import ProImg from "../../Atoms/ProductImg";
 import SingleProContent from "../../Molecules/BannerText";
 import ProductOverlay from "../../../assets/product_overlay.png";
 interface IProduct {
-  urlProImg?: string;
-  content?: string;
+  id:string;
+  urlImg?: string;
+  urlVideo?: string;
+  title?: string;
+  description?: string;
   price?: number;
+  quantity?: number;
+  createAt?: Date;
 }
 interface ISinglePro {
   product: IProduct;
@@ -15,14 +20,14 @@ interface ISinglePro {
 }
 const Index: React.FC<ISinglePro> = ({ product, revere }) => {
   const owlClass = "o-singleProList";
-  const { urlProImg, content, price } = product;
+  const { title,description,urlImg,price,quantity} = product;
   return (
-    <Container className={owlClass}>
-      <Row className={`${owlClass}-row mt-5`}>
+    // <Container className={owlClass}>
+      <Row className={`${owlClass} m-0`}>
         {revere ? (
           <React.Fragment>
             <Col md={{ order: 1 }}>
-              <ProImg productOverlay={ProductOverlay} productImg={urlProImg} />
+              <ProImg productOverlay={ProductOverlay} productImg={urlImg} />
             </Col>
             <Col
               md={{ span: 5, offset: 3, order: 2 }}
@@ -31,7 +36,7 @@ const Index: React.FC<ISinglePro> = ({ product, revere }) => {
               <SingleProContent
                 btnTitle="Explore more"
                 btnColor="btn btn-outline-light"
-                text={<h2>{content}</h2>}
+                text={<h2>{title}</h2>}
               >
                 <h5>Started from ${price}</h5>
               </SingleProContent>
@@ -46,18 +51,18 @@ const Index: React.FC<ISinglePro> = ({ product, revere }) => {
               <SingleProContent
                 btnTitle="Explore more"
                 btnColor="btn btn-outline-light"
-                text={<h2>{content}</h2>}
+                text={<h2>{title}</h2>}
               >
                 <h5>Started from ${price}</h5>
               </SingleProContent>
             </Col>
             <Col md={{ order: 2 }}>
-              <ProImg productOverlay={ProductOverlay} productImg={urlProImg} />
+              <ProImg productOverlay={ProductOverlay} productImg={urlImg} />
             </Col>
           </React.Fragment>
         )}
       </Row>
-    </Container>
+    // </Container>
   );
 };
 

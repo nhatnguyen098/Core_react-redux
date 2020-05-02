@@ -16,10 +16,10 @@ const Index = ({ productArr }: { productArr: any }) => {
             key={`index-${i}`}
             className={`${owlClass}-item text-center`}
           >
-            <Image className={`${owlClass}-item-img`} src={item.urlProImg} />
+            <Image className={`${owlClass}-item-img`} src={`../../../assets/product/${item.urlImg}`} />
 
             <Carousel.Caption className={`${owlClass}-item-caption`}>
-              <h3>{item.content}</h3>
+              <h3>{item.title}</h3>
               <p>${item.price}</p>
             </Carousel.Caption>
           </Carousel.Item>

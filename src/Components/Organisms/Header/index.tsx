@@ -7,7 +7,7 @@ import "./style.scss";
 const Index = () => {
   const owlClass = "wrapperHeader";
   return (
-    <Row className={`${owlClass} m-0`}>
+    <Row className={`${owlClass}`}>
       <Logo />
       <HeaderNavbar />
       <HeaderIcons />
