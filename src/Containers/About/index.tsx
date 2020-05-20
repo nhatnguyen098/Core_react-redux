@@ -1,7 +1,11 @@
 import React from 'react'
 import AboutPage from '../../Components/Pages/About'
-const index = () => {
+interface IAbout {
+    match:any;
+    history:any;
+}
+const Index:React.FC<IAbout> = ({match,history}) => {
     return <AboutPage/>
 }
 
-export default index
+export default Index

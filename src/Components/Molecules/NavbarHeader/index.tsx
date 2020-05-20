@@ -13,8 +13,19 @@ interface INavMenu {
 const Index = () => {
   const owlClass = "navWrapper";
   const [showDropDown, setShowDropDown] = useState(-1);
-
-  const RenderNavItem = ({ menuItem }: { menuItem: INavMenu }) => {
+  const scrollTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
+  }
+  const RenderNavItem = ({
+    menuItem,
+    className,
+  }: {
+    menuItem: INavMenu;
+    className: string;
+  }) => {
     let xhtml = null;
     let { id, label, path, children } = menuItem;
     let status = showDropDown === id ? true : false;
@@ -23,20 +34,20 @@ const Index = () => {
         <NavDropdown
           id="nav-dropdown"
           title={label}
-          className={`${owlClass}-nav-drop ml-3 mr-3`}
+          className={`${owlClass}-nav-drop ml-3 mr-3 ${className}`}
           size="16px"
           onMouseOver={() => setShowDropDown(id)}
           onMouseOut={() => setShowDropDown(-1)}
           active={status}
           show={status}
         >
-          {children.map((child: any, index:number) => {
+          {children.map((child: any, index: number) => {
             return (
               <Link
                 className={`${owlClass}-nav-drop-item nav-link`}
                 key={index}
-                onClick={() => console.log(child)}
-                to={path}
+                onClick={() => scrollTop()}
+                to={child.path}
               >
                 {child.childLabel}
                 <span className="sr-only">(current)</span>
@@ -47,7 +58,8 @@ const Index = () => {
       ) : (
         <Link
           key={id}
-          className={`${owlClass}-nav-drop ml-3 mr-3 nav-link`}
+          className={`${owlClass}-nav-drop ml-3 mr-3 nav-link ${className}`}
+          onClick = {() => scrollTop()}
           to={path}
         >
           {label}
@@ -66,7 +78,11 @@ const Index = () => {
           path={item.path}
           exact={item.activeOnlyWhenExact}
           children={({ match }: { match: any }) => (
-            <RenderNavItem key={index} menuItem={item} />
+            <RenderNavItem
+              key={index}
+              menuItem={item}
+              className={match === item.id ? "active" : ""}
+            />
           )}
         />
       ));

@@ -1,0 +1,10 @@
+@import '../../../Commons/variable.scss';
+.m-breadcrumb {
+    .breadcrumb {
+        background-color: $white-color;
+    }
+    .breadcrumb-item {
+        color: $pink-color;
+    }
+ 
+}

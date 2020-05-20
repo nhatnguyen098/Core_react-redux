@@ -1,5 +1,4 @@
-import React, { useState, useEffect } from "react";
-import { Container, Row } from "react-bootstrap";
+import React from "react";
 import BannerPart from "../../Organisms/BannerPart";
 import SingleProduct from "../../Organisms/SingleProList";
 import TrendingPart from "../../Organisms/TrendingList";
@@ -10,20 +9,25 @@ import Loading from "../../Atoms/Loading";
 interface IHomePage {
   productList: [];
   loading: boolean;
+  onGoToDetail: (val: number) => void;
 }
-const Index: React.FC<IHomePage> = ({ productList, loading }) => {
-  const owlClass = "HomePage"
+const Index: React.FC<IHomePage> = ({ productList, loading, onGoToDetail }) => {
+  // const owlClass = "HomePage";
   return (
     <React.Fragment>
+      {/* Banner Part  */}
+      <meta name="NhatNguyen" content="Pillow page" />
       <BannerPart />
+      {/* End Banner Part  */}
 
+      {/* Product List */}
       <section
         style={{
           display: "block",
           width: "100%",
-          paddingTop: "50px",
+          paddingTop: "150px",
           paddingLeft: "300px",
-          paddingRight:"300px"
+          paddingRight: "300px",
         }}
       >
         {loading ? (
@@ -35,35 +39,39 @@ const Index: React.FC<IHomePage> = ({ productList, loading }) => {
                 key={i}
                 product={item}
                 revere={(i + 1) % 2 !== 0 ? true : false}
+                onGoToDetail={(val) => onGoToDetail(val)}
               />
             );
           })
         ) : (
-          "Nothing items in list"
+          <h3>Nothing items in list</h3>
         )}
       </section>
+      {/* End product list */}
 
-      <section>
-        {loading ? (
-          <Loading />
-        ) : productList.slice(3, 9).length > 0 ? (
-          <TrendingPart productArr={productList.slice(3, 9)} />
-        ) : (
-          "Nothing items in list"
-        )}
-      </section>
+      {/* Trending product */}
+      {loading ? (
+        <Loading />
+      ) : productList.slice(3, 9).length > 0 ? (
+        <TrendingPart productArr={productList.slice(3, 9)} />
+      ) : (
+        <h3>Nothing items in list</h3>
+      )}
+      {/* End trending product */}
 
-      <section>
-        {loading ? (
-          <Loading />
-        ) : productList.slice(10, 14).length > 0 ? (
-          productList.length > 0 && (
+      {/* Carousel */}
+      {loading ? (
+        <Loading />
+      ) : productList.slice(10, 14).length > 0 ? (
+        productList.length > 0 && (
+          <React.Fragment>
             <Carousel productArr={productList.slice(10, 15)} />
-          )
-        ) : (
-          "Nothing items in list"
-        )}
-      </section>
+          </React.Fragment>
+        )
+      ) : (
+        <h3>Nothing items in list</h3>
+      )}
+      {/* End carousel */}
       <FeaturePart />
     </React.Fragment>
   );

@@ -1,6 +1,6 @@
 @import '../../../Commons/variable.scss';
 .m-formSubscribe {
-    .form-control::-webkit-input-placeholder { color: white; }
+    .form-control::-webkit-input-placeholder { color:$white-color; }
     border:1px solid $white-color;
     padding: {
         left: 10px;

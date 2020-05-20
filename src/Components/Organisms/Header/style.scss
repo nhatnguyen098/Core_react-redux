@@ -1,4 +1,4 @@
-.wrapperHeader{
+.wrapperHeader {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -8,9 +8,11 @@
     top: 0;
     width: 100%;
     padding: 0 300px 0 300px;
-    margin:0;
-    padding:{
-        top:10px;
+    margin: 0;
+    height: 70px;
+
+    padding: {
+        top: 10px;
         bottom: 10px;
     }
 }

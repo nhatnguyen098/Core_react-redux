@@ -21,7 +21,7 @@ const Index = () => {
           </TitleSubscribeButton>
         </Col>
         <Col md={12} className={`${owlClass}-wrapper-form`}>
-          <FormSubscribe />
+          <FormSubscribe btnTitle = "Subscribe"/>
         </Col>
       </Row>
     </Container >

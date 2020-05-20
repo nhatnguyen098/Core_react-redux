@@ -14,5 +14,8 @@ class AxiosService {
     get(url) {
         return this.instance.get(url)
     }
+    post(url){
+        
+    }
 }
 export default new AxiosService()

@@ -1,11 +1,18 @@
-import React from "react";
-import { Carousel, Image } from "react-bootstrap";
+import React, {useState} from "react";
+import { Carousel, ResponsiveEmbed } from "react-bootstrap";
 import "./style.scss";
 import { FiArrowLeftCircle, FiArrowRightCircle } from "react-icons/fi";
 const Index = ({ productArr }: { productArr: any }) => {
   const owlClass = "m-carousel";
+  const [index, setIndex] = useState(0);
+
+  const handleSelect = (selectedIndex:any, e:any) => {
+    setIndex(selectedIndex);
+  };
   return (
     <Carousel
+      activeIndex={index}
+      onSelect={handleSelect}
       className={owlClass}
       prevIcon={<FiArrowLeftCircle size="2.5em" color="#795376" />}
       nextIcon={<FiArrowRightCircle size="2.5em" color="#795376" />}
@@ -16,8 +23,14 @@ const Index = ({ productArr }: { productArr: any }) => {
             key={`index-${i}`}
             className={`${owlClass}-item text-center`}
           >
-            <Image className={`${owlClass}-item-img`} src={`../../../assets/product/${item.urlImg}`} />
-
+            <div
+              className={`${owlClass}-item-img`}
+              style={{ width: "550px", height: "400px" }}
+            >
+              <ResponsiveEmbed aspectRatio="16by9">
+                <embed src={item.urlVideo} />
+              </ResponsiveEmbed>
+            </div>
             <Carousel.Caption className={`${owlClass}-item-caption`}>
               <h3>{item.title}</h3>
               <p>${item.price}</p>

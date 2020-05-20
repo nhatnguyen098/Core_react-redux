@@ -1,0 +1,15 @@
+@import '../../../Commons/variable.scss';
+.p-login {
+    margin-top: 150px;
+    width: 40%;
+    &-btn {
+        background-color: $pink-color;
+        color: $white-color;
+        border-color:$white-color;
+        &:hover {
+            background-color:$white-color;
+            color:$pink-color;
+            border-color: $pink-color;
+        }
+    }
+}

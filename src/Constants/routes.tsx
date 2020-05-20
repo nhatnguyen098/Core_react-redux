@@ -1,70 +1,94 @@
-import React from 'react';
-import HomePage from '../Containers/Home'
-import AboutPage from '../Containers/About'
-
+import React, { lazy, Suspense } from "react";
+const HomePage = lazy(() => import("../Containers/Home"));
+const AboutPage = lazy(() => import("../Containers/About"));
+const ProductList = lazy(() => import("../Containers/ProductList"));
+const ProductDetail = lazy(() => import("../Containers/ProductDetail"));
+const NotFound = lazy(() => import("../Containers/NotFound"));
+const LoginPage = lazy(() => import("../Containers/Login"));
+const UserProfile = lazy(() => import("../Containers/UserProfile"));
+interface IRoutes {
+  match: any;
+  history: any;
+}
 export const NavbarMenu = [
   {
     id: 1,
-    path: '/',
+    path: "/",
     label: "Home",
     exact: true,
     children: [],
-    main: () => <HomePage/>
+    main: () => (
+      <Suspense fallback={<div>Loading...</div>}>
+        <HomePage />
+      </Suspense>
+    ),
   },
   {
     id: 2,
-    path: '/about',
-    label: "About",
+    path: "/product",
+    label: "Product",
     exact: true,
     children: [],
-    main: () => <AboutPage/>
+    main: (routes: IRoutes) => (
+      <Suspense fallback={<div>Loading...</div>}>
+        <ProductList match={routes.match} history={routes.history} />
+      </Suspense>
+    ),
   },
   {
     id: 3,
-    label: "Product",
-    path: '/productList',
-    children: [
-      {
-        childId: 31,
-        childLabel: "Product List",
-      },
-      {
-        childId: 32,
-        childLabel: "Product Detail",
-      },
-    ],
+    path: "/about",
+    label: "About",
+    exact: true,
+    children: [],
+    main: (routes: IRoutes) => (
+      <Suspense fallback={<div>Loading...</div>}>
+        <AboutPage match={routes.match} history={routes.history} />
+      </Suspense>
+    ),
   },
   {
     id: 4,
-    label: "Pages",
-    children: [
-      {
-        childId: 41,
-        childLabel: "Login page",
-        path: '/login',
-      },
-      {
-        childId: 42,
-        childLabel: "Sign up page",
-        path: '/signup',
-      },
-      {
-        childId: 43,
-        childLabel: "Cart page",
-        path: '/card',
-      },
-    ],
+    path: "/product/:id",
+    exact: true,
+    children: [],
+    main: (routes: IRoutes) => (
+      <Suspense fallback={<div>Loading...</div>}>
+        <ProductDetail match={routes.match} history={routes.history} />
+      </Suspense>
+    ),
   },
   {
     id: 5,
-    label: "Blog",
-    children: []
+    path: "/userProfile",
+    exact: true,
+    children: [],
+    main: (routes: IRoutes) => (
+      <Suspense fallback={<div>Loading...</div>}>
+        <UserProfile match={routes.match} history={routes.history} />
+      </Suspense>
+    ),
   },
   {
     id: 6,
-    label: "Contact",
-    path: '/contact',
+    path: "/login",
+    exact: true,
     children: [],
+    main: (routes: IRoutes) => (
+      <Suspense fallback={<div>Loading...</div>}>
+        <LoginPage match={routes.match} history={routes.history} />
+      </Suspense>
+    ),
+  },
+  {
+    id: -1,
+    path: "",
+    exact: false,
+    children: [],
+    main: () => (
+      <Suspense fallback={<div>Loading...</div>}>
+        <NotFound />
+      </Suspense>
+    ),
   },
 ];
-

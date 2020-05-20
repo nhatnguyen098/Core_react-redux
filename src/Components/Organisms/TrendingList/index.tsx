@@ -7,7 +7,7 @@ const Index = ({productArr} : {productArr:any}) => {
     return (
         <section className = {owlClass}>
             <Title className = 'text-center mb-5'><h2 className = {`${owlClass}-h2`}>Trending Products</h2></Title>
-            <ProductCart productArr = {productArr}/>
+            <ProductCart productArr = {productArr} chunkSize = {3} parentUrlImg = "tranding_item"/>
         </section>
     )
 }
