@@ -7,7 +7,6 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { NavbarMenu } from "./Constants/routes";
 import Layout from "./Commons/layout";
 import PrivateRoute from "./Commons/privateRoute";
-import { AuthProvider } from "./Commons/authentication";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 const store = configStore();
@@ -49,7 +48,6 @@ const App = () => {
   };
   return (
     <Provider store={store}>
-      <AuthProvider>
         <Router>
           <Layout fluid className="App">
             <Switch>{mapRouteMenu(NavbarMenu)}</Switch>
@@ -57,7 +55,6 @@ const App = () => {
             <ToastContainer position={toast.POSITION.TOP_RIGHT} />
           </Layout>
         </Router>
-      </AuthProvider>
     </Provider>
   );
 };

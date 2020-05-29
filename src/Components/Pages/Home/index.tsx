@@ -16,7 +16,6 @@ const Index: React.FC<IHomePage> = ({ productList, loading, onGoToDetail }) => {
   return (
     <React.Fragment>
       {/* Banner Part  */}
-      <meta name="NhatNguyen" content="Pillow page" />
       <BannerPart />
       {/* End Banner Part  */}
 

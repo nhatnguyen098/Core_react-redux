@@ -17,12 +17,8 @@ const Index = ({ match, history }: { match: any; history: any }) => {
       toast.warn(user.error);
     }
     if(user.data.token !== null){
-      console.log(user.data)
       history.push('/userProfile')
     }
-    // else{
-    //   history.push('/userProfile')
-    // }
   }, [user]);
   
   return (

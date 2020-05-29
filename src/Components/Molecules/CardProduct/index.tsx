@@ -2,6 +2,7 @@ import React from "react";
 import { Row, Col, Card } from "react-bootstrap";
 import "./style.scss";
 import ButtonCard from "../../Atoms/Button";
+import {AiFillHeart} from 'react-icons/ai'
 interface IProduct {
   id: number;
   urlImg?: string;
@@ -19,6 +20,10 @@ interface ICardProduct {
 }
 const Index: React.FC<ICardProduct> = ({ productArr,chunkSize,parentUrlImg }) => {
   const owlClass = "m-cardProduct";
+  const [color,setColor] = React.useState<IProduct[]>([])
+  const onLikePillow = (id:number) => {
+    setColor(productArr.filter((item:any) => item.id === id))
+  }
   const renderCard = (arr: IProduct[],size:number) => {
     let xhtml = null;
     let newArr = [];
@@ -42,6 +47,8 @@ const Index: React.FC<ICardProduct> = ({ productArr,chunkSize,parentUrlImg }) =>
                     <Card.Body>
                       <Card.Title>{item.title}</Card.Title>
                       <Card.Text>${item.price}</Card.Text>
+                      <Card.Text onClick = {() => onLikePillow(item.id)}><AiFillHeart className = "pr-1" size = "1.5em" color = {color.find((s:any) => s.id === item.id) !== undefined ? "red": ""}/>Like</Card.Text>
+                    
                       <ButtonCard
                         className=""
                         proId={item.id}

@@ -1,4 +1,4 @@
-import { USER_LOGIN,USER_LOGIN_SUCCESS, USER_LOGIN_ERROR, userLogin,userLoginSuccess, userLoginError } from './../../Actions/userInfo';
+import { USER_LOGIN,USER_LOGIN_SUCCESS, USER_LOGIN_ERROR, USER_LOGOUT } from './../../Actions/userInfo';
 interface IUser {
     email: string;
     password:string;
@@ -16,11 +16,12 @@ export default (state = initState, action:any) => {
         case USER_LOGIN:
             return {...state, loading:true}
         case USER_LOGIN_SUCCESS:
-            console.log(action.data)
             const {email,xa} = action.data.user
-            return {...state, data: {...state.data, email: email, token:xa},loading:false}
+            return {...state, data: {...state.data, email: email, token:xa},loading:false, error: null}
         case USER_LOGIN_ERROR:
             return {...state,data: {...state.data,email:null,token:null}, loading: false, error: action.error.message}
+        case USER_LOGOUT:
+            return {...state,data: {...state.data,email:null,token:null}}
         default: return {...state}
     }
 }

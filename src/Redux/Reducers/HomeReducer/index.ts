@@ -3,6 +3,9 @@ import {
   FETCHING_PRODUCT_LIST_SUCCESS,
   FETCHING_PRODUCT_LIST_ERROR,
   FILTER_PRODUCT_PRICE,
+  FETCHING_PRODUCT_BY_ID,
+  FETCHING_PRODUCT_BY_ID_SUCCESS,
+  FETCHING_PRODUCT_BY_ID_ERROR,
 } from "../../Actions";
 interface IStateData {
   id: string;
@@ -24,6 +27,11 @@ const initState = {
     loading: true,
     error: null,
   },
+  proDetail: {
+    data: {},
+    loading: true,
+    error: null,
+  },
 };
 export default (state = initState, action: any) => {
   switch (action.type) {
@@ -41,8 +49,6 @@ export default (state = initState, action: any) => {
       };
     case FILTER_PRODUCT_PRICE:
       let { priceFrom, priceTo } = action.rangePrice;
-      console.log(priceFrom)
-      console.log(action.type)
       return {
         ...state,
         filterPro: {
@@ -51,9 +57,23 @@ export default (state = initState, action: any) => {
             (item: IStateData) =>
               item.price >= priceFrom && item.price < priceTo
           ),
-          loading:false
+          loading: false,
         },
       };
+    case FETCHING_PRODUCT_BY_ID:
+      return { ...state, proDetail: { ...state.proDetail, loading: true } };
+    case FETCHING_PRODUCT_BY_ID_SUCCESS:
+      return {
+        ...state,
+        proDetail: {
+          ...state.proDetail,
+          data: action.data,
+          loading: false,
+          error: null,
+        },
+      };
+    case FETCHING_PRODUCT_BY_ID_ERROR:
+      return { ...state, proDetail: { ...state.proDetail,data: {}, loading: false, error: action.error } };
     default:
       return state;
   }

@@ -5,25 +5,20 @@ import HeaderIcons from "../../Molecules/IconsHeader";
 import Logo from "../../Atoms/Logo";
 import SearchForm from "../../Molecules/SearchForm";
 import "./style.scss";
-// const SearchForm = lazy(() => import("../../Molecules/SearchForm"));
-
+import {useSelector,useDispatch} from 'react-redux'
+import {userLogOut} from '../../../Redux/Actions/userInfo'
 const Index = () => {
   const owlClass = "wrapperHeader";
   const [displayForm, setDisplayForm] = useState<boolean>(false);
   const [showModal, setShowModal] = useState(false);
+  const {token} = useSelector((state:any) => state.user.data)
+  const dispatch = useDispatch()
   return (
     <Row className={`${owlClass}`}>
       <Logo />
       <HeaderNavbar />
-      <HeaderIcons
-        showSearchForm={(val) => setDisplayForm(val)}
-        showSignUp={showModal}
-        changeDisplayModal={(val) => setShowModal(val)}
-      />
-      {/* <Suspense fallback = {<input readOnly>...</input>}> */}
+      <HeaderIcons onLogOut = {() => dispatch(userLogOut())} token = {token} showSearchForm={(val) => setDisplayForm(val)} />
       {displayForm && <SearchForm display={displayForm} />}
-
-      {/* </Suspense> */}
     </Row>
   );
 };
