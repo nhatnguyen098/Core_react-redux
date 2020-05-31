@@ -1,6 +1,7 @@
 import React from "react";
 import { Container, Form, Button, Col } from "react-bootstrap";
 import { Formik } from "formik";
+import Loading from "../../Atoms/Loading";
 // import {Redirect} from 'react-router-dom'
 // import Button from "../../Atoms/Button";
 import * as Yup from "yup";
@@ -10,10 +11,15 @@ interface IFormLogin {
   password: string;
 }
 interface ILogin {
-  handleSubmit: (val:IFormLogin) => void
+  handleSubmit: (val: IFormLogin) => void;
+  loading: boolean;
 }
-const Index: React.FC<ILogin> = ({handleSubmit}) => {
+const Index: React.FC<ILogin> = ({ handleSubmit, loading }) => {
   const owlClass = "p-login";
+  const refs = React.useRef<any>(null);
+  React.useEffect(() => {
+    refs.current.focus();
+  }, []);
   const schema = Yup.object().shape({
     email: Yup.string().email("Invalid email").required("Required"),
     password: Yup.string()
@@ -25,7 +31,9 @@ const Index: React.FC<ILogin> = ({handleSubmit}) => {
   //   console.log(val)
   //   return <Redirect to={"/"} />
   // };
-  return (
+  return loading ? (
+    <Loading />
+  ) : (
     <Container className={owlClass}>
       <Formik
         initialValues={{
@@ -39,12 +47,17 @@ const Index: React.FC<ILogin> = ({handleSubmit}) => {
           handleSubmit(values);
         }}
       >
-        {({ handleBlur, handleChange, handleSubmit, errors, touched,values }) => (
+        {({
+          handleBlur,
+          handleChange,
+          handleSubmit,
+          errors,
+          touched,
+          values,
+        }) => (
           <Form noValidate onSubmit={handleSubmit}>
             <Form.Group as={Col} md={12} controlId="email">
-              <Form.Label className="pr-5 mb-3">
-                Email:
-              </Form.Label>
+              <Form.Label className="pr-5 mb-3">Email:</Form.Label>
 
               <Form.Control
                 name="email"
@@ -55,6 +68,7 @@ const Index: React.FC<ILogin> = ({handleSubmit}) => {
                 value={values.email}
                 isValid={touched.email && !errors.email}
                 isInvalid={touched.email && !!errors.email}
+                ref={refs}
               />
               {errors.email && touched.email ? (
                 <Form.Control.Feedback type="invalid">
@@ -63,9 +77,7 @@ const Index: React.FC<ILogin> = ({handleSubmit}) => {
               ) : null}
             </Form.Group>
             <Form.Group as={Col} md={12} controlId="password">
-              <Form.Label className="pr-5 mb-3">
-                Password:
-              </Form.Label>
+              <Form.Label className="pr-5 mb-3">Password:</Form.Label>
 
               <Form.Control
                 name="password"
@@ -85,7 +97,9 @@ const Index: React.FC<ILogin> = ({handleSubmit}) => {
             </Form.Group>
 
             <div className={`text-center`}>
-              <Button className = {`${owlClass}-btn`} type = "submit">Login</Button>
+              <Button className={`${owlClass}-btn`} type="submit">
+                Login
+              </Button>
             </div>
           </Form>
         )}

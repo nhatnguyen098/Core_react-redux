@@ -11,18 +11,19 @@ import { toast } from "react-toastify";
 // }
 const Index = ({ match, history }: { match: any; history: any }) => {
   const dispatch = useDispatch();
-  const user = useSelector((state: any) => state.user);
+  const { data, loading, error } = useSelector((state: any) => state.user);
   React.useEffect(() => {
-    if(user.error){
-      toast.warn(user.error);
+    if (error) {
+      toast.warn(error);
     }
-    if(user.data.token !== null){
-      history.push('/userProfile')
+    if (data.token !== null) {
+      history.push("/userProfile");
     }
-  }, [user, history]);
-  
+  }, [data, error, history]);
+
   return (
     <LoginPage
+      loading={loading}
       handleSubmit={(val) => dispatch(userLogin(val.email, val.password))}
     />
   );
