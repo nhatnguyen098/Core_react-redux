@@ -1,14 +1,14 @@
 import React from "react";
 import LoginPage from "../../Components/Pages/Login";
-import fireBase from "../../Constants/fireBase";
+// import fireBase from "../../Constants/fireBase";
 import { useSelector, useDispatch } from "react-redux";
 import { userLogin } from "../../Redux/Actions/userInfo";
 import { toast } from "react-toastify";
-import { Route, Redirect } from "react-router-dom";
-interface ILogin {
-  email: string;
-  password: string;
-}
+// import { Route, Redirect } from "react-router-dom";
+// interface ILogin {
+//   email: string;
+//   password: string;
+// }
 const Index = ({ match, history }: { match: any; history: any }) => {
   const dispatch = useDispatch();
   const user = useSelector((state: any) => state.user);
@@ -19,7 +19,7 @@ const Index = ({ match, history }: { match: any; history: any }) => {
     if(user.data.token !== null){
       history.push('/userProfile')
     }
-  }, [user]);
+  }, [user, history]);
   
   return (
     <LoginPage

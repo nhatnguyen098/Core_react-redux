@@ -6,11 +6,11 @@ const Index = ({match,history} : {match:any,history:any}) => {
     // console.log(match)
     // console.log(history)
     const {id} = match.params
-    const {data,loading,error} = useSelector((state:any) => state.home.proDetail)
+    const {data} = useSelector((state:any) => state.home.proDetail)
     const dispatch = useDispatch()
     useEffect(() => {
         dispatch(fetching_pro_by_id(id))
-    },[id])
+    },[id,dispatch])
     console.log(data)
     return <ProductDetail/>
 }

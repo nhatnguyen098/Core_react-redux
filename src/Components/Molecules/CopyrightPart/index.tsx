@@ -2,6 +2,7 @@ import React from "react";
 import Text from "../../Atoms/Text";
 import "./style.scss";
 import { Row, Col, Container } from "react-bootstrap";
+import {Link} from 'react-router-dom'
 const Index = () => {
   const owlClass = "m-copyRight";
   return (
@@ -15,10 +16,10 @@ const Index = () => {
       </Col>
       <Col className = "d-flex justify-content-center">
         <Text className = "mr-5">
-          <a href="#" className = "text-dark">Turns & Conditions </a>
+          <Link to = "/" className = "text-dark">Turns & Conditions </Link>
         </Text>
         <Text className = "mr-5">
-          <a href="#" className = "text-dark">FAQ </a>
+          <Link to = "/" className = "text-dark">FAQ </Link>
         </Text>
       </Col>
     </Row>

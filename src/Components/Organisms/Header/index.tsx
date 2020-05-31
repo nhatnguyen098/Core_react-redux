@@ -10,7 +10,7 @@ import {userLogOut} from '../../../Redux/Actions/userInfo'
 const Index = () => {
   const owlClass = "wrapperHeader";
   const [displayForm, setDisplayForm] = useState<boolean>(false);
-  const [showModal, setShowModal] = useState(false);
+  // const [showModal, setShowModal] = useState(false);
   const {token} = useSelector((state:any) => state.user.data)
   const dispatch = useDispatch()
   return (

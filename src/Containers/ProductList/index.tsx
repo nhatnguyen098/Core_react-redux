@@ -22,7 +22,7 @@ const Index: React.FC<IProductList> = ({ match, history }) => {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(fetching_proList());
-  }, []);
+  }, [dispatch]);
   return (
     <ProductPage
       url={match.url}

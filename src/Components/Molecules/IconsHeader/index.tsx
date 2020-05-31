@@ -3,15 +3,14 @@ import "./style.scss";
 import { MdShoppingCart } from "react-icons/md";
 import { IoIosSearch } from "react-icons/io";
 import { FaRegUserCircle } from "react-icons/fa";
-import ModalSignUp from "../ModalUser";
-import PopoverUser from "../PopoverUserIcon";
+// import ModalSignUp from "../ModalUser";
+// import PopoverUser from "../PopoverUserIcon";
 import { OverlayTrigger, Popover, Tabs, Tab } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { GrLogin } from "react-icons/gr";
 import { FaSignOutAlt } from "react-icons/fa";
 import {AiOutlineProfile} from 'react-icons/ai'
 import {FiUserPlus} from 'react-icons/fi'
-
 interface IHeaderIcons {
   showSearchForm: (val: boolean) => void;
   token: any;
@@ -22,7 +21,7 @@ const Index: React.FC<IHeaderIcons> = ({ showSearchForm, token, onLogOut }) => {
   const [show, setShow] = useState<boolean>(false);
   useEffect(() => {
     showSearchForm(show);
-  }, [show]);
+  }, [show]); // eslint-disable-line react-hooks/exhaustive-deps
   const userPopoverContent = () => {
     let html = null;
     if (token) {
@@ -58,12 +57,12 @@ const Index: React.FC<IHeaderIcons> = ({ showSearchForm, token, onLogOut }) => {
   };
   return (
     <div className={`${owlClass} d-flex`}>
-      <a className={`${owlClass}-icon`} onClick={() => setShow(!show)}>
+      <Link to = "#" className={`${owlClass}-icon`} onClick={() => setShow(!show)}>
         <IoIosSearch size="1.5em" />
-      </a>
-      <a className={`${owlClass}-icon`} onClick={() => console.log("here 2")}>
+      </Link>
+      <Link to = "#" className={`${owlClass}-icon`} onClick={() => console.log("here 2")}>
         <MdShoppingCart size="1.5em" />
-      </a>
+      </Link>
       <OverlayTrigger
         trigger="click"
         key="bottom"
@@ -85,9 +84,9 @@ const Index: React.FC<IHeaderIcons> = ({ showSearchForm, token, onLogOut }) => {
           </Popover>
         }
       >
-        <a className={`${owlClass}-icon`}>
+        <Link to = "#" className={`${owlClass}-icon`}>
           <FaRegUserCircle size="1.5em" />
-        </a>
+        </Link>
       </OverlayTrigger>
     </div>
   );

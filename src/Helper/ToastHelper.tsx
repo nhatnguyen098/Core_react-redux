@@ -1,11 +1,7 @@
-import React from 'react'
+// import React from "react";
+import { toast } from "react-toastify";
+const ToastHelper = ({ error }: { error: any }) => {
+  return toast.success(error && error);
+};
 
-const ToastHelper = () => {
-    return (
-        <div>
-            
-        </div>
-    )
-}
-
-export default ToastHelper
+export default ToastHelper;
