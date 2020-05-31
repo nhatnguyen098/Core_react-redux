@@ -1,0 +1,21 @@
+.wrapperHeader {
+    @media only screen and (max-width: 768px){
+        visibility: hidden;;
+    }
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed;
+    background-color: white;
+    z-index: 1;
+    top: 0;
+    width: 100%;
+    padding: 0 300px 0 300px;
+    margin: 0;
+    height: 70px;
+
+    padding: {
+        top: 10px;
+        bottom: 10px;
+    }
+}

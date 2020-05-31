@@ -1,0 +1,8 @@
+.wrapperIcons{
+    justify-content: center;
+    align-items: center;
+    &-icon {
+        cursor: pointer;
+        margin: 10px;
+    }
+}

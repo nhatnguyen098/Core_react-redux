@@ -1,0 +1,43 @@
+@import '../../../Commons//variable.scss';
+
+.m-searchForm {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.2);
+    &-btn {
+        &:hover {
+            background-color: unset !important;
+            color: $white-color !important;
+        }
+    }
+}
+
+.default{
+    visibility: hidden;
+    overflow: hidden;
+    transform: translate(-20%);
+    transition: 0.2s;
+}
+
+.checked {
+    position: relative;
+    background-color: $pink-color;
+    visibility: visible;
+    overflow: hidden;
+    transform: translate(0%);
+    border: unset;
+    &:focus {
+        background-color: $pink-color;
+        outline: none;
+        border: unset;
+        box-shadow: unset;
+        color: $white-color;
+    }
+        transition: 0.2s;
+
+}
+.form-control::-webkit-input-placeholder {
+    color: $white-color;
+}

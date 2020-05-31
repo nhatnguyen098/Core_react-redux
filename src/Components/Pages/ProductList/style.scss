@@ -1,0 +1,122 @@
+@import '../../../Commons/variable.scss';
+
+.p-productList {
+    // padding-top:0px;
+    margin-bottom: 30px;
+
+    &-banner {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        height: 350px;
+        background-color: $pink-color;
+        margin-bottom: 20px;
+    }
+
+    &-content {
+        padding: {
+            left: 180px;
+            right: 180px;
+        }
+
+        &-col {
+            &-formSearch {
+                margin: 10px;
+
+                &-group {
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    border: 1px solid $pink-color;
+                    border-radius: 20px;
+
+                    &-text {
+                        border: unset;
+                        width: 85%;
+                        flex-grow: 0;
+
+                        &:focus {
+                            outline: none;
+                            box-shadow: none;
+                        }
+
+                    }
+                }
+
+            }
+
+            &-priceBtn {
+                position: relative;
+                width: 100%;
+                border-radius: 30px;
+                background-color: $pink-footer-bg;
+                color: $pink-color;
+                z-index: 2;
+                border-color: $pink-footer-bg;
+                margin-bottom: 15px;
+
+                &:hover {
+                    background-color: $pink-footer-bg;
+                    color: black;
+                    border-color: $pink-footer-bg;
+                }
+
+                &:active {
+                    background-color: $pink-footer-bg !important;
+                    color: black !important;
+                    border-color: $pink-footer-bg !important;
+                    box-shadow: none !important;
+                }
+
+                &:focus {
+                    background-color: $pink-footer-bg;
+                    color: black;
+                    border-color: $pink-footer-bg;
+                    box-shadow: none;
+                }
+
+                &-icon {
+                    width: 30px;
+                    height: 30px;
+                    position: absolute;
+                    transform: translateY(-50%);
+                    top: 50%;
+                    right: 5%;
+
+                    .check {
+                        transform: rotate(180deg);
+                        transition: 0.2s;
+                    }
+                }
+            }
+
+            &-expand {
+                position: relative;
+                height: 0;
+                visibility: hidden;
+                overflow: hidden;
+                transition: 0.2s;
+                transform: translateY(-100%);
+                z-index: 1;
+                border: 1px solid $pink-color;
+                padding: 15px;
+
+                margin: {
+                    left: 10px;
+                    right: 10px;
+                }
+            }
+
+            .showed {
+                visibility: visible;
+                height: auto;
+                overflow: hidden;
+                transition: 0.2s;
+                transform: translateY(0%);
+            }
+        }
+
+    }
+
+}

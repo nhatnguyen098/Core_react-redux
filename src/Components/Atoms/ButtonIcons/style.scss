@@ -1,0 +1,11 @@
+@import '../../../Commons/variable.scss';
+.a-bntIcon {
+    background-color: $pink-bg;
+    border:unset;
+    width: 45px;
+    height: 45px;
+    &:hover {
+        background-color: $pink-color;
+        color:$white-color;
+    }
+}

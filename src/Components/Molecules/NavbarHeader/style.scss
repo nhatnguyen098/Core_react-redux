@@ -1,0 +1,24 @@
+@import '../../../Commons/variable.scss';
+.navWrapper{
+    &-nav{
+        &-drop {
+            color: $black-color !important;  
+            .nav-link {
+                color: $black-color !important;
+                &:after {
+                    margin-left:10px;
+                }
+            }
+            .show {
+                background-color: $pink-color;
+            }
+            &-item {
+                color: $white-color;
+                &:focus {
+                    background-color: $white-color;
+                }
+            }
+        }
+        
+    }
+}

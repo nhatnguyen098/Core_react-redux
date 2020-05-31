@@ -1,0 +1,19 @@
+@import '../../../Commons/variable.scss';
+.o-bannerPart {
+    height: 782px;
+    width: 100%;
+    margin-bottom: 50px;
+    &-col {
+        &-img {
+            cursor: pointer;
+            width: 977px;
+            height: 728px;
+            overflow: hidden;
+            &:hover {
+                transform: scale(1.01);
+                transition: transform 0.5s ease 0s;;
+            }
+        }
+
+    }
+}
